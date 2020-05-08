@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'/>
+<meta content='width=device-width,minimum-scale=1,initial-scale=1' name='viewport'/>
+<title>Recent Post</title>
+<style>
+body{margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,"Roboto","Segoe UI","Oxygen-Sans","Ubuntu","Cantarell","Helvetica Neue",sans-serif;}
+a,img{transition:all .4s ease-in-out}
+#recentpostnav{border:1px solid #585858;width:100%;margin:0 auto}
+#recentpost{margin:0;background:#fff;}
+.recentpostel{background:#fff;display:block;border-bottom:1px solid #ddd;margin:0 0 10px;padding:0 0 10px;height:72px}
+.recentpostel:last-child{margin:0;border-bottom:none;}
+.recentpostel h6,.recentpostel h6 a{text-decoration:none;font-size:16px;font-weight:700;line-height:1.2;margin:0;color:#555}
+.recentpostel h6 a:hover{color:#777}
+#recentpostload{color:#888;font-family:Tahoma;font-size:100px;letter-spacing:-10px;text-align:center;text-shadow:-5px 0 1px #444;background:url(https://2.bp.blogspot.com/-60aISBQLRY0/VFBMqzLfzGI/AAAAAAAABgM/GInmVTvEzkc/s1600/loader.gif) 50% 50% no-repeat #fff;height:470px;border:1px solid #ddd}
+#recentpostnavfeed{background:#eee;text-align:center;margin:0}
+#recentpostnavfeed a{text-decoration:none;display:block;padding:5px}
+#recentpostnavfeed span{padding:5px}
+#recentpostnavfeed .next{float:right}
+#recentpostnavfeed .previous{float:left}
+#recentpostnavfeed .home{text-align:center;display:inline-block;}
+#recentpostnavfeed svg{vertical-align:middle;}
+</style>
+
+</head>
+
+<body>
+<div class="box" id="box">
+<div id="recentpost"></div>
+<div id="recentpostnavfeed"></div>
+</div>
+<script>
+function getQueryVariable(variable) {
+  var query = window.location.search.substring(1);
+  var vars = query.split("&");
+  for (var i=0;i<vars.length;i++) {
+    var pair = vars[i].split("=");
+    if(pair[0] == variable){return pair[1];}
+  }
+  return(false);
+}
+  function generateCss(q) {
+    var css       = document.createElement('style'),
+        sp2       = document.getElementById('box'),
+        parentDiv = sp2.parentNode;
+    css.type = 'text/css';
+    if (css.styleSheet) css.styleSheet.cssText = q;
+    else css.appendChild(document.createTextNode(q));
+    parentDiv.insertBefore(css, sp2);
+  }
+    (function() {
+    var q = '.recentpostel h6 a {font-size:' + getQueryVariable('fontSize') + ';color:#' + getQueryVariable('color') + '}';
+        generateCss(q);
+  })();
+  </script>
+</body>
+</html>
